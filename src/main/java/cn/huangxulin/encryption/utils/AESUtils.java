@@ -37,10 +37,20 @@ public final class AESUtils {
 
     }
 
+    /**
+     * 生成随机密钥
+     *
+     * @return 随机密钥
+     */
     public static String initKey() {
         return randomStr(KEY_LENGTH);
     }
 
+    /**
+     * 生成初始向量
+     *
+     * @return 初始向量
+     */
     public static String initIV() {
         return randomStr(IV_LENGTH);
     }
