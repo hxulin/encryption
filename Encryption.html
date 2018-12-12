@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Encryption</title>
+	<style>
+		td {
+			word-break: break-all;
+		}
+	</style>
+</head>
+<body>
+	<div style="width: 820px;margin: 30px auto 50px">
+		<h2>AES加解密</h2>
+		<table border="2" width="820" cellpadding="5" cellspacing="0">
+			<tbody>
+				<tr>
+					<td width="150">AES密钥</td>
+					<td class="aes-key">BvJcwS0jidmW7VvF</td>
+				</tr>
+				<tr>
+					<td>AES初始向量</td>
+					<td class="aes-iv">B20vWiZ3pGnmgL4B</td>
+				</tr>
+				<tr>
+					<td>需要加密的内容</td>
+					<td class="aes-data">春江潮水连海平，海上明月共潮生。</td>
+				</tr>
+				<tr style="background-color: #f9fbba">
+					<td>Java加密结果</td>
+					<td class="aes-java-encryption">Lm++mq9BgPPQglJjZ1ym+u29D/VRJVT2tJOF3LfrCrmhhse9veUbSko53CcBTBIu063PFb0UaTEzJUXTDt63SA==</td>
+				</tr>
+				<tr style="background-color: #f9fbba">
+					<td>Java解密结果</td>
+					<td class="aes-java-decryption">春江潮水连海平，海上明月共潮生。</td>
+				</tr>
+				<tr style="background-color: #f9fbba">
+					<td>js加密结果</td>
+					<td class="aes-js-encryption">Lm++mq9BgPPQglJjZ1ym+u29D/VRJVT2tJOF3LfrCrmhhse9veUbSko53CcBTBIu063PFb0UaTEzJUXTDt63SA==</td>
+				</tr>
+				<tr style="background-color: #f9fbba">
+					<td>js解密结果</td>
+					<td class="aes-js-decryption">春江潮水连海平，海上明月共潮生。</td>
+				</tr>
+			</tbody>
+		</table>
+		<h2>RSA加解密</h2>
+		<table border="2" width="820px" cellpadding="5" cellspacing="0">
+			<tbody>
+				<tr>
+					<td width="150">RSA公钥</td>
+					<td class="rsa-public-key">MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvlUONmgUj79lDhRy+ZCMz/eBJ7sVG6NEV0XVEowyy288CMJGwXaNuqguMazakU6oQs2V03vU+Zib9bVT9qJZjXGXJjHIYtk7iQE3RQXFlBYudzGYGbYw9PKnlYwv0HixHyDmy8TIyE+h0nfDEYuv8reoLxWl9q2up9f1gXsPFqQIDAQAB</td>
+				</tr>
+				<tr>
+					<td>RSA私钥</td>
+					<td class="rsa-private-key">MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAK+VQ42aBSPv2UOFHL5kIzP94EnuxUbo0RXRdUSjDLLbzwIwkbBdo26qC4xrNqRTqhCzZXTe9T5mJv1tVP2olmNcZcmMchi2TuJATdFBcWUFi53MZgZtjD08qeVjC/QeLEfIObLxMjIT6HSd8MRi6/yt6gvFaX2ra6n1/WBew8WpAgMBAAECgYA+63FKw//FkgS8Ym4beAz5a6e9NrgxIesTM30ffIJnccdr1HXQyq1vUbZTunPZTTXrSC46RE+D7d1ZAZ3sTEafeMcisZhduVUKTDBXaFLsPxyXIMJqYKtkpsCTYFjOBMWMsy6ZCH2jBsplJTQcsfGtZMqhCGK0gRuZzbsqjS+GAQJBAPfF2oWmvEw7Rk3YT9n8F+WHJomnDGcHvXn/4a2v5trSPCfsJbx5V3I0FZgvpxQ2hbzGkl6o4Zt5GDzjhMIdEsECQQC1acZFsKau6pKR8wIZl4BFKxsU5zWNdVJsX2jYRas/7wS32E1677BuTcPH5tTiKCgi9wB1l0adXtWvPH8unrTpAkBU+lG5FvdrucSh/DdeztwvR4wLF/Tj/T6Z8g2nsTWfBQ3Gr3I90uwP6hch6+4Eu7JgjUY0Gv3NgdmzQGEO5kPBAkAfaN/2Yv6JHH4iHPQJIE0KLMt0lA+WnXCW6PILOAzNdgHYHvBTT7q5bmdubg3/1joUy7VdpsKILspKm+vdU4c5AkAoX3dxpyyS2tlCfLRRFxF4Uxm1e5iNFQTe3Vq/JZFYnu4jEoVieaZGP1arqTx5pDg5ssssESUDKx+4qkPvdH2f</td>
+				</tr>
+				<tr>
+					<td>需要加密的内容</td>
+					<td class="rsa-data">白云一片去悠悠，青枫浦上不胜愁。</td>
+				</tr>
+				<tr style="background-color: #f6c2c2">
+					<td>Java公钥加密</td>
+					<td class="rsa-java-pub-encryption">GxXjU9/46c/k2zny3M3VFTeQhiLA5//u7e6hmjP5InkQPbFZkGv+RxSGQOWr+G5rouNfpL1jMRcpFdJUwpcXB5cpttxThnBu0R7GXL1KRI2Bt5a2FO1QN/LpbbW120YicbENlTp64VhnAPH43LMtscXBwNxaY7K0YC1b/IaoP6A=</td>
+				</tr>
+				<tr style="background-color: #f6c2c2">
+					<td>js私钥解密</td>
+					<td class="rsa-js-pri-decryption">白云一片去悠悠，青枫浦上不胜愁。</td>
+				</tr>
+				<tr style="background-color: #d4edf4">
+					<td>js公钥加密</td>
+					<td class="rsa-js-pub-encryption">ZYJvMxyIU1JnrIet1YFzwfopGf7Jstu1nHK5ij6evH0+hsWF0eCASyGltac7DQazWmb9Pf+9xzW7wG0uObT/aLY6k+gEGzeFvBf08cLCjBcB0N7liRUNJcCaihlYYV7XTuxPYjnjo0XdgQPmc+95fwP/CP4GfeL94harKLvLjLo=</td>
+				</tr>
+				<tr style="background-color: #d4edf4">
+					<td>Java私钥解密</td>
+					<td class="rsa-java-pri-decryption">白云一片去悠悠，青枫浦上不胜愁。</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="color: red;font-size: 18px">注：RSA同一公钥加密结果不同是正常的，配对的私钥均可解密。</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
