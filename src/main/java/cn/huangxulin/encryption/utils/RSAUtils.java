@@ -105,6 +105,7 @@ public final class RSAUtils {
      * @param data 需要加密的原文
      * @param key  公钥
      * @return 加密后进行Base64的密文
+     * @throws Exception 加密失败
      */
     public static String encryptByPublicKey(String data, String key) throws Exception {
         return encryptBASE64(encryptByPublicKey(data.getBytes(CHARACTER_ENCODING), key));
@@ -116,6 +117,7 @@ public final class RSAUtils {
      * @param data 需要加密的数据
      * @param key  公钥
      * @return 加密后的数据
+     * @throws Exception 加密失败
      */
     public static byte[] encryptByPublicKey(byte[] data, String key) throws Exception {
         return cryptoByPublicKey(Cipher.ENCRYPT_MODE, data, decryptBASE64(key));
@@ -127,6 +129,7 @@ public final class RSAUtils {
      * @param data 需要解密的密文
      * @param key  公钥
      * @return 解密后的明文
+     * @throws Exception 解密失败
      */
     public static String decryptByPublicKey(String data, String key) throws Exception {
         return new String(decryptByPublicKey(decryptBASE64(data), key), CHARACTER_ENCODING);
@@ -138,19 +141,14 @@ public final class RSAUtils {
      * @param data 需要解密的数据
      * @param key  公钥
      * @return 解密后的数据
+     * @throws Exception 解密失败
      */
     public static byte[] decryptByPublicKey(byte[] data, String key) throws Exception {
         return cryptoByPublicKey(Cipher.DECRYPT_MODE, data, decryptBASE64(key));
     }
 
     /**
-     * 内部使用，使用公钥加解密数据
-     *
-     * @param opmode   模式
-     * @param data     数据
-     * @param keyBytes 密钥的字节数组
-     * @return 加解密的结果
-     * @throws Exception 加解密失败
+     * 使用公钥加解密数据
      */
     private static byte[] cryptoByPublicKey(int opmode, byte[] data, byte[] keyBytes) throws Exception {
         // 取得公钥
@@ -164,10 +162,7 @@ public final class RSAUtils {
     }
 
     /**
-     * 内部使用，RSA加解密数据有长度限制，此处对数据做分段处理
-     *
-     * @return 处理结果
-     * @throws Exception 处理出错
+     * RSA加解密数据有长度限制，此处对数据做分段处理
      */
     private static byte[] handleResult(int opmode, byte[] data, Cipher cipher) throws Exception {
         int inputLen = data.length;
@@ -194,6 +189,7 @@ public final class RSAUtils {
      * @param data 需要加密的原文
      * @param key  私钥
      * @return 加密后进行Base64的密文
+     * @throws Exception 加密失败
      */
     public static String encryptByPrivateKey(String data, String key) throws Exception {
         return encryptBASE64(encryptByPrivateKey(data.getBytes(CHARACTER_ENCODING), key));
@@ -205,6 +201,7 @@ public final class RSAUtils {
      * @param data 需要加密的数据
      * @param key  私钥
      * @return 加密后的数据
+     * @throws Exception 加密失败
      */
     public static byte[] encryptByPrivateKey(byte[] data, String key) throws Exception {
         return cryptoByPrivateKey(Cipher.ENCRYPT_MODE, data, decryptBASE64(key));
@@ -216,6 +213,7 @@ public final class RSAUtils {
      * @param data 需要解密的密文
      * @param key  私钥
      * @return 解密后的明文
+     * @throws Exception 解密失败
      */
     public static String decryptByPrivateKey(String data, String key) throws Exception {
         return new String(decryptByPrivateKey(decryptBASE64(data), key), CHARACTER_ENCODING);
@@ -227,19 +225,14 @@ public final class RSAUtils {
      * @param data 需要解密的数据
      * @param key  私钥
      * @return 解密后的数据
+     * @throws Exception 解密失败
      */
     public static byte[] decryptByPrivateKey(byte[] data, String key) throws Exception {
         return cryptoByPrivateKey(Cipher.DECRYPT_MODE, data, decryptBASE64(key));
     }
 
     /**
-     * 内部使用，使用私钥加解密数据
-     *
-     * @param opmode   模式
-     * @param data     数据
-     * @param keyBytes 密钥的字节数组
-     * @return 加解密的结果
-     * @throws Exception 加解密失败
+     * 使用私钥加解密数据
      */
     private static byte[] cryptoByPrivateKey(int opmode, byte[] data, byte[] keyBytes) throws Exception {
         // 取得私钥

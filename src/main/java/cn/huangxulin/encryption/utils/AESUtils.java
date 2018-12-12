@@ -46,7 +46,7 @@ public final class AESUtils {
     }
 
     /**
-     * 内部使用，生成指定长度的随机字符串
+     * 生成指定长度的随机字符串
      *
      * @param len 长度
      * @return 随机字符串
