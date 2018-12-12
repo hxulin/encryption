@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Encryption</title>
+	<!-- AES 加密依赖 -->
+	<script src="static/plugins/aes.js"></script>
+	<!-- RSA 加密依赖 -->
+	<script src="static/plugins/jsencrypt.min.js"></script>
+	<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+	<script src="static/js/index.js"></script>
+	<style>
+		td {
+			word-break: break-all;
+		}
+	</style>
+</head>
+<body>
+	<div style="width: 820px;margin: 30px auto 50px">
+		<h2>AES加解密</h2>
+		<table border="2" width="820" cellpadding="5" cellspacing="0">
+			<tr>
+				<td width="150">AES密钥</td>
+				<td class="aes-key"></td>
+			</tr>
+			<tr>
+				<td>AES初始向量</td>
+				<td class="aes-iv"></td>
+			</tr>
+			<tr>
+				<td>需要加密的内容</td>
+				<td class="aes-data"></td>
+			</tr>
+			<tr style="background-color: #f9fbba">
+				<td>Java加密结果</td>
+				<td class="aes-java-encryption"></td>
+			</tr>
+			<tr style="background-color: #f9fbba">
+				<td>Java解密结果</td>
+				<td class="aes-java-decryption"></td>
+			</tr>
+			<tr style="background-color: #f9fbba">
+				<td>js加密结果</td>
+				<td class="aes-js-encryption"></td>
+			</tr>
+			<tr style="background-color: #f9fbba">
+				<td>js解密结果</td>
+				<td class="aes-js-decryption"></td>
+			</tr>
+		</table>
+		<h2>RSA加解密</h2>
+		<table border="2" width="820px" cellpadding="5" cellspacing="0">
+			<tr>
+				<td width="150">RSA公钥</td>
+				<td class="rsa-public-key"></td>
+			</tr>
+			<tr>
+				<td>RSA私钥</td>
+				<td class="rsa-private-key"></td>
+			</tr>
+			<tr>
+				<td>需要加密的内容</td>
+				<td class="rsa-data"></td>
+			</tr>
+			<tr style="background-color: #f6c2c2">
+				<td>Java公钥加密</td>
+				<td class="rsa-java-pub-encryption"></td>
+			</tr>
+			<tr style="background-color: #f6c2c2">
+				<td>js私钥解密</td>
+				<td class="rsa-js-pri-decryption"></td>
+			</tr>
+			<tr style="background-color: #d4edf4">
+				<td>js公钥加密</td>
+				<td class="rsa-js-pub-encryption"></td>
+			</tr>
+			<tr style="background-color: #d4edf4">
+				<td>Java私钥解密</td>
+				<td class="rsa-java-pri-decryption"></td>
+			</tr>
+			<tr>
+				<td colspan="2" style="color: red;font-size: 18px">注：RSA同一公钥加密结果不同是正常的，配对的私钥均可解密。</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

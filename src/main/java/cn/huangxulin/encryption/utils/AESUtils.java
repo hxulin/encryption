@@ -1,0 +1,125 @@
+package cn.huangxulin.encryption.utils;
+
+import java.util.Base64;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
+/**
+ * AES加解密的工具类
+ *
+ * @author hxulin
+ */
+public final class AESUtils {
+
+    /**
+     * 字符编码
+     */
+    private static final String CHARACTER_ENCODING = "utf-8";
+
+    /**
+     * 生成密钥的基本字符串
+     */
+    private static final String BASE_STR = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+
+    /**
+     * 密钥长度
+     */
+    private static final int KEY_LENGTH = 16;
+
+    /**
+     * 初始向量的长度
+     */
+    private static final int IV_LENGTH = 16;
+
+    private AESUtils() {
+
+    }
+
+    public static String initKey() {
+        return randomStr(KEY_LENGTH);
+    }
+
+    public static String initIV() {
+        return randomStr(IV_LENGTH);
+    }
+
+    /**
+     * 内部使用，生成指定长度的随机字符串
+     *
+     * @param len 长度
+     * @return 随机字符串
+     */
+    private static String randomStr(int len) {
+        StringBuilder sBuilder = new StringBuilder(len);
+        double r;
+        for (int i = 0; i < len; i++) {
+            r = Math.random() * BASE_STR.length();
+            sBuilder.append(BASE_STR.charAt((int) r));
+        }
+        return sBuilder.toString();
+    }
+
+    /**
+     * 使用AES算法加密字符串
+     *
+     * @param data 需要加密的原文
+     * @param key  密钥(16位字母、数字或符号)
+     * @param iv   初始向量(16位字母、数字或符号)，使用CBC模式，需要一个向量iv，可增加加密算法的强度
+     * @return 加密后进行Base64的密文
+     * @throws Exception 加密失败
+     */
+    public static String encrypt(String data, String key, String iv) throws Exception {
+        return Base64.getEncoder().encodeToString(encrypt(data.getBytes(CHARACTER_ENCODING), key, iv));
+    }
+
+    /**
+     * 使用AES算法加密数据
+     *
+     * @param data 需要加密的数据
+     * @param key  密钥(16位字母、数字或符号)
+     * @param iv   初始向量(16位字母、数字或符号)，使用CBC模式，需要一个向量iv，可增加加密算法的强度
+     * @return 加密后的数据
+     * @throws Exception 加密失败
+     */
+    public static byte[] encrypt(byte[] data, String key, String iv) throws Exception {
+        return crypto(Cipher.ENCRYPT_MODE, data, key, iv);
+    }
+
+    /**
+     * 使用AES算法解密字符串
+     *
+     * @param data 需要解密的密文
+     * @param key  密钥(16位字母、数字或符号)
+     * @param iv   初始向量(16位字母、数字或符号)
+     * @return 解密后的明文
+     * @throws Exception 解密失败
+     */
+    public static String decrypt(String data, String key, String iv) throws Exception {
+        byte[] decrypted = decrypt(Base64.getDecoder().decode(data), key, iv);
+        return new String(decrypted, CHARACTER_ENCODING);
+    }
+
+    /**
+     * 使用AES算法解密数据
+     *
+     * @param data 需要解密的数据
+     * @param key  密钥(16位字母、数字或符号)
+     * @param iv   初始向量(16位字母、数字或符号)
+     * @return 解密后的数据
+     * @throws Exception 解密失败
+     */
+    public static byte[] decrypt(byte[] data, String key, String iv) throws Exception {
+        return crypto(Cipher.DECRYPT_MODE, data, key, iv);
+    }
+
+    private static byte[] crypto(int opmode, byte[] content, String key, String iv) throws Exception {
+        SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(CHARACTER_ENCODING), "AES");
+        Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");  // 算法/模式/补码方式
+        IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes(CHARACTER_ENCODING));
+        cipher.init(opmode, keySpec, ivParameterSpec);
+        return cipher.doFinal(content);
+    }
+
+}
