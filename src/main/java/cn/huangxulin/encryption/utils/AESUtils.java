@@ -19,19 +19,9 @@ public final class AESUtils {
     private static final String CHARACTER_ENCODING = "utf-8";
 
     /**
-     * 生成密钥的基本字符串
+     * 生成密钥的基本字符
      */
-    private static final String BASE_STR = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-
-    /**
-     * 密钥长度
-     */
-    private static final int KEY_LENGTH = 16;
-
-    /**
-     * 初始向量的长度
-     */
-    private static final int IV_LENGTH = 16;
+    private static final String BASE_CHARACTER = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789";
 
     private AESUtils() {
 
@@ -43,7 +33,7 @@ public final class AESUtils {
      * @return 随机密钥
      */
     public static String initKey() {
-        return randomStr(KEY_LENGTH);
+        return generateKeyOrIV();
     }
 
     /**
@@ -52,21 +42,18 @@ public final class AESUtils {
      * @return 初始向量
      */
     public static String initIV() {
-        return randomStr(IV_LENGTH);
+        return generateKeyOrIV();
     }
 
     /**
-     * 生成指定长度的随机字符串
-     *
-     * @param len 长度
-     * @return 随机字符串
+     * 生成随机密钥、初始向量
      */
-    private static String randomStr(int len) {
-        StringBuilder sBuilder = new StringBuilder(len);
+    private static String generateKeyOrIV() {
+        StringBuilder sBuilder = new StringBuilder();
         double r;
-        for (int i = 0; i < len; i++) {
-            r = Math.random() * BASE_STR.length();
-            sBuilder.append(BASE_STR.charAt((int) r));
+        for (int i = 0; i < 16; i++) {
+            r = Math.random() * BASE_CHARACTER.length();
+            sBuilder.append(BASE_CHARACTER.charAt((int) r));
         }
         return sBuilder.toString();
     }
@@ -124,6 +111,9 @@ public final class AESUtils {
         return crypto(Cipher.DECRYPT_MODE, data, key, iv);
     }
 
+    /**
+     * 加解密数据
+     */
     private static byte[] crypto(int opmode, byte[] content, String key, String iv) throws Exception {
         SecretKeySpec keySpec = new SecretKeySpec(key.getBytes(CHARACTER_ENCODING), "AES");
         Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");  // 算法/模式/补码方式
