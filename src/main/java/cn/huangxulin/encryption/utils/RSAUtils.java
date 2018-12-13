@@ -246,11 +246,11 @@ public final class RSAUtils {
     }
 
     /**
-     * 用私钥对信息生成数字签名
+     * 为数据创建数字签名
      *
      * @param data       需要签名的数据
      * @param privateKey 私钥
-     * @return Base64编码的签名信息
+     * @return 签名信息
      * @throws Exception 签名失败
      */
     public static String sign(String data, String privateKey) throws Exception {
@@ -258,11 +258,11 @@ public final class RSAUtils {
     }
 
     /**
-     * 用私钥对信息生成数字签名
+     * 为数据创建数字签名
      *
      * @param data       需要签名的数据
      * @param privateKey 私钥
-     * @return Base64编码的签名信息
+     * @return 签名信息
      * @throws Exception 签名失败
      */
     public static String sign(byte[] data, String privateKey) throws Exception {
