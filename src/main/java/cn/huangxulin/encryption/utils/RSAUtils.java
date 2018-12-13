@@ -246,7 +246,7 @@ public final class RSAUtils {
     }
 
     /**
-     * 为数据创建数字签名
+     * 创建数字签名
      *
      * @param data       需要签名的数据
      * @param privateKey 私钥
@@ -258,7 +258,7 @@ public final class RSAUtils {
     }
 
     /**
-     * 为数据创建数字签名
+     * 创建数字签名
      *
      * @param data       需要签名的数据
      * @param privateKey 私钥
