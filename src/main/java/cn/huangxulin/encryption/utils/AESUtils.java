@@ -21,7 +21,7 @@ public final class AESUtils {
     /**
      * 生成密钥的基本字符
      */
-    private static final String BASE_CHARACTER = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789";
+    private static final String BASE_CHARACTER = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
     private AESUtils() {
 
